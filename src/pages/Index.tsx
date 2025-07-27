@@ -91,34 +91,35 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="border-b border-gray-100 sticky top-0 bg-white z-40">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 xl:px-8 py-4 xl:py-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-8 xl:space-x-12">
               <div className="flex items-center space-x-3">
                 <img 
                   src="/img/048aa371-f0a9-4d0a-9aad-0d260c328e3d.jpg" 
                   alt="Цветочный рай" 
-                  className="h-10 w-10 object-contain"
+                  className="h-10 w-10 xl:h-12 xl:w-12 object-contain"
                 />
-                <h1 className="text-2xl font-bold text-black">Цветочный рай</h1>
+                <h1 className="text-2xl xl:text-3xl font-bold text-black">Цветочный рай</h1>
               </div>
-              <nav className="hidden md:flex space-x-6">
-                <a href="#catalog" className="text-gray-600 hover:text-black transition-colors">Каталог</a>
-                <a href="#about" className="text-gray-600 hover:text-black transition-colors">О нас</a>
-                <a href="#delivery" className="text-gray-600 hover:text-black transition-colors">Доставка</a>
-                <a href="#contacts" className="text-gray-600 hover:text-black transition-colors">Контакты</a>
+              <nav className="hidden lg:flex space-x-8 xl:space-x-10">
+                <a href="#catalog" className="text-gray-600 hover:text-black transition-colors text-lg">Каталог</a>
+                <a href="#about" className="text-gray-600 hover:text-black transition-colors text-lg">О нас</a>
+                <a href="#delivery" className="text-gray-600 hover:text-black transition-colors text-lg">Доставка</a>
+                <a href="#contacts" className="text-gray-600 hover:text-black transition-colors text-lg">Контакты</a>
               </nav>
             </div>
             <div className="flex items-center space-x-4">
               <Button
                 variant="outline"
-                size="sm"
+                size="default"
                 onClick={() => setIsCartOpen(!isCartOpen)}
-                className="relative"
+                className="relative xl:px-6 xl:py-3"
               >
-                <Icon name="ShoppingCart" size={18} />
+                <Icon name="ShoppingCart" size={20} className="xl:mr-2" />
+                <span className="hidden xl:inline">Корзина</span>
                 {getTotalItems() > 0 && (
-                  <Badge className="absolute -top-2 -right-2 h-5 w-5 p-0 flex items-center justify-center text-xs">
+                  <Badge className="absolute -top-2 -right-2 h-5 w-5 xl:h-6 xl:w-6 p-0 flex items-center justify-center text-xs">
                     {getTotalItems()}
                   </Badge>
                 )}
@@ -129,56 +130,56 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-5xl font-bold text-black mb-6">
+      <section className="py-20 xl:py-32 bg-gray-50">
+        <div className="container mx-auto px-4 xl:px-8 text-center">
+          <h2 className="text-5xl xl:text-7xl font-bold text-black mb-8 xl:mb-12 leading-tight">
             Домашние растения<br />для уютного дома
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-xl xl:text-2xl text-gray-600 max-w-3xl xl:max-w-4xl mx-auto mb-12 xl:mb-16 leading-relaxed">
             Создайте зеленый оазис в своем доме с нашей коллекцией здоровых и красивых растений
           </p>
-          <Button size="lg" className="bg-black text-white hover:bg-gray-800">
+          <Button size="lg" className="bg-black text-white hover:bg-gray-800 xl:px-8 xl:py-4 xl:text-lg">
             Смотреть каталог
           </Button>
         </div>
       </section>
 
       {/* Catalog Section */}
-      <section id="catalog" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-black mb-4">Популярные растения</h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+      <section id="catalog" className="py-20 xl:py-32">
+        <div className="container mx-auto px-4 xl:px-8">
+          <div className="text-center mb-16 xl:mb-24">
+            <h3 className="text-4xl xl:text-6xl font-bold text-black mb-6 xl:mb-8">Популярные растения</h3>
+            <p className="text-gray-600 xl:text-xl max-w-2xl xl:max-w-3xl mx-auto">
               Тщательно отобранные растения для создания идеального интерьера
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:gap-10 max-w-7xl mx-auto">
             {plants.map((plant) => (
-              <Card key={plant.id} className="group hover:shadow-lg transition-shadow duration-300">
-                <div className="aspect-square overflow-hidden bg-gray-50">
+              <Card key={plant.id} className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                <div className="aspect-square overflow-hidden bg-gray-50 rounded-t-lg">
                   <img
                     src={plant.image}
                     alt={plant.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <CardHeader>
+                <CardHeader className="xl:p-6">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle className="text-lg font-semibold">{plant.name}</CardTitle>
-                      <CardDescription className="text-sm text-gray-500 mt-1">
+                      <CardTitle className="text-lg xl:text-xl font-semibold">{plant.name}</CardTitle>
+                      <CardDescription className="text-sm xl:text-base text-gray-500 mt-1">
                         {plant.category}
                       </CardDescription>
                     </div>
-                    <span className="text-xl font-bold text-black">{plant.price}₽</span>
+                    <span className="text-xl xl:text-2xl font-bold text-black">{plant.price}₽</span>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-sm mb-4">{plant.description}</p>
+                <CardContent className="xl:p-6 xl:pt-0">
+                  <p className="text-gray-600 text-sm xl:text-base mb-4 xl:mb-6 leading-relaxed">{plant.description}</p>
                   <Button 
                     onClick={() => addToCart(plant)}
-                    className="w-full bg-black text-white hover:bg-gray-800"
+                    className="w-full bg-black text-white hover:bg-gray-800 xl:py-3 xl:text-base transition-all duration-300"
                   >
                     Добавить в корзину
                   </Button>
@@ -268,35 +269,35 @@ const Index = () => {
       )}
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-4xl font-bold text-black mb-8">О нас</h3>
-            <p className="text-lg text-gray-600 mb-8">
+      <section id="about" className="py-20 xl:py-32 bg-gray-50">
+        <div className="container mx-auto px-4 xl:px-8">
+          <div className="max-w-5xl xl:max-w-6xl mx-auto text-center">
+            <h3 className="text-4xl xl:text-6xl font-bold text-black mb-8 xl:mb-12">О нас</h3>
+            <p className="text-lg xl:text-2xl text-gray-600 mb-12 xl:mb-16 leading-relaxed max-w-4xl mx-auto">
               Цветочный рай — это больше чем магазин растений. Мы помогаем людям создавать 
               живые пространства, которые вдохновляют и радуют каждый день.
             </p>
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Leaf" size={24} className="text-white" />
+            <div className="grid md:grid-cols-3 gap-8 xl:gap-12 mt-12 xl:mt-20">
+              <div className="text-center group">
+                <div className="w-20 h-20 xl:w-24 xl:h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6 xl:mb-8 transition-all duration-300 group-hover:bg-gray-800 group-hover:scale-110">
+                  <Icon name="Leaf" size={28} className="text-white xl:w-8 xl:h-8" />
                 </div>
-                <h4 className="font-semibold mb-2">Качество</h4>
-                <p className="text-gray-600 text-sm">Только здоровые и качественные растения</p>
+                <h4 className="font-bold text-lg xl:text-xl mb-3 xl:mb-4">Качество</h4>
+                <p className="text-gray-600 xl:text-lg leading-relaxed">Только здоровые и качественные растения</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Heart" size={24} className="text-white" />
+              <div className="text-center group">
+                <div className="w-20 h-20 xl:w-24 xl:h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6 xl:mb-8 transition-all duration-300 group-hover:bg-gray-800 group-hover:scale-110">
+                  <Icon name="Heart" size={28} className="text-white xl:w-8 xl:h-8" />
                 </div>
-                <h4 className="font-semibold mb-2">Забота</h4>
-                <p className="text-gray-600 text-sm">Консультации по уходу за растениями</p>
+                <h4 className="font-bold text-lg xl:text-xl mb-3 xl:mb-4">Забота</h4>
+                <p className="text-gray-600 xl:text-lg leading-relaxed">Консультации по уходу за растениями</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Truck" size={24} className="text-white" />
+              <div className="text-center group">
+                <div className="w-20 h-20 xl:w-24 xl:h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6 xl:mb-8 transition-all duration-300 group-hover:bg-gray-800 group-hover:scale-110">
+                  <Icon name="Truck" size={28} className="text-white xl:w-8 xl:h-8" />
                 </div>
-                <h4 className="font-semibold mb-2">Доставка</h4>
-                <p className="text-gray-600 text-sm">Бережная доставка по всей России</p>
+                <h4 className="font-bold text-lg xl:text-xl mb-3 xl:mb-4">Доставка</h4>
+                <p className="text-gray-600 xl:text-lg leading-relaxed">Бережная доставка по всей России</p>
               </div>
             </div>
           </div>
@@ -304,44 +305,44 @@ const Index = () => {
       </section>
 
       {/* Delivery Section */}
-      <section id="delivery" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-4xl font-bold text-black mb-8 text-center">Доставка</h3>
-            <div className="grid md:grid-cols-2 gap-12">
+      <section id="delivery" className="py-20 xl:py-32">
+        <div className="container mx-auto px-4 xl:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h3 className="text-4xl xl:text-6xl font-bold text-black mb-12 xl:mb-16 text-center">Доставка</h3>
+            <div className="grid md:grid-cols-2 gap-12 xl:gap-20">
               <div>
-                <h4 className="text-xl font-semibold mb-4">Условия доставки</h4>
-                <ul className="space-y-3 text-gray-600">
+                <h4 className="text-xl xl:text-2xl font-semibold mb-6 xl:mb-8">Условия доставки</h4>
+                <ul className="space-y-4 xl:space-y-6 text-gray-600">
                   <li className="flex items-center">
-                    <Icon name="Check" size={16} className="mr-3 text-green-500" />
-                    Бесплатная доставка от 3000₽
+                    <Icon name="Check" size={20} className="mr-4 text-green-500 xl:w-6 xl:h-6" />
+                    <span className="xl:text-lg">Бесплатная доставка от 3000₽</span>
                   </li>
                   <li className="flex items-center">
-                    <Icon name="Check" size={16} className="mr-3 text-green-500" />
-                    Доставка в день заказа (Москва)
+                    <Icon name="Check" size={20} className="mr-4 text-green-500 xl:w-6 xl:h-6" />
+                    <span className="xl:text-lg">Доставка в день заказа (Москва)</span>
                   </li>
                   <li className="flex items-center">
-                    <Icon name="Check" size={16} className="mr-3 text-green-500" />
-                    Специальная упаковка для растений
+                    <Icon name="Check" size={20} className="mr-4 text-green-500 xl:w-6 xl:h-6" />
+                    <span className="xl:text-lg">Специальная упаковка для растений</span>
                   </li>
                   <li className="flex items-center">
-                    <Icon name="Check" size={16} className="mr-3 text-green-500" />
-                    Гарантия сохранности при доставке
+                    <Icon name="Check" size={20} className="mr-4 text-green-500 xl:w-6 xl:h-6" />
+                    <span className="xl:text-lg">Гарантия сохранности при доставке</span>
                   </li>
                 </ul>
               </div>
               <div>
-                <h4 className="text-xl font-semibold mb-4">Стоимость</h4>
-                <div className="space-y-3">
-                  <div className="flex justify-between py-2 border-b">
+                <h4 className="text-xl xl:text-2xl font-semibold mb-6 xl:mb-8">Стоимость</h4>
+                <div className="space-y-4 xl:space-y-6">
+                  <div className="flex justify-between py-3 xl:py-4 border-b xl:text-lg">
                     <span>Москва (в пределах МКАД)</span>
                     <span className="font-semibold">300₽</span>
                   </div>
-                  <div className="flex justify-between py-2 border-b">
+                  <div className="flex justify-between py-3 xl:py-4 border-b xl:text-lg">
                     <span>Московская область</span>
                     <span className="font-semibold">500₽</span>
                   </div>
-                  <div className="flex justify-between py-2 border-b">
+                  <div className="flex justify-between py-3 xl:py-4 border-b xl:text-lg">
                     <span>Регионы России</span>
                     <span className="font-semibold">от 800₽</span>
                   </div>
@@ -353,36 +354,36 @@ const Index = () => {
       </section>
 
       {/* Contacts Section */}
-      <section id="contacts" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-4xl font-bold text-black mb-8">Контакты</h3>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div>
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Phone" size={24} className="text-white" />
+      <section id="contacts" className="py-20 xl:py-32 bg-gray-50">
+        <div className="container mx-auto px-4 xl:px-8">
+          <div className="max-w-5xl xl:max-w-6xl mx-auto text-center">
+            <h3 className="text-4xl xl:text-6xl font-bold text-black mb-12 xl:mb-16">Контакты</h3>
+            <div className="grid md:grid-cols-3 gap-12 xl:gap-16">
+              <div className="group">
+                <div className="w-20 h-20 xl:w-24 xl:h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6 xl:mb-8 transition-all duration-300 group-hover:bg-gray-800 group-hover:scale-110">
+                  <Icon name="Phone" size={28} className="text-white xl:w-8 xl:h-8" />
                 </div>
-                <h4 className="font-semibold mb-2">Телефон</h4>
-                <p className="text-gray-600">+7 (495) 123-45-67</p>
+                <h4 className="font-bold text-lg xl:text-xl mb-3 xl:mb-4">Телефон</h4>
+                <p className="text-gray-600 xl:text-lg">+7 (495) 123-45-67</p>
               </div>
-              <div>
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Mail" size={24} className="text-white" />
+              <div className="group">
+                <div className="w-20 h-20 xl:w-24 xl:h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6 xl:mb-8 transition-all duration-300 group-hover:bg-gray-800 group-hover:scale-110">
+                  <Icon name="Mail" size={28} className="text-white xl:w-8 xl:h-8" />
                 </div>
-                <h4 className="font-semibold mb-2">Email</h4>
-                <p className="text-gray-600">info@greenhome.ru</p>
+                <h4 className="font-bold text-lg xl:text-xl mb-3 xl:mb-4">Email</h4>
+                <p className="text-gray-600 xl:text-lg">info@flowersparadise.ru</p>
               </div>
-              <div>
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="MapPin" size={24} className="text-white" />
+              <div className="group">
+                <div className="w-20 h-20 xl:w-24 xl:h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-6 xl:mb-8 transition-all duration-300 group-hover:bg-gray-800 group-hover:scale-110">
+                  <Icon name="MapPin" size={28} className="text-white xl:w-8 xl:h-8" />
                 </div>
-                <h4 className="font-semibold mb-2">Адрес</h4>
-                <p className="text-gray-600">Москва, ул. Садовая, 15</p>
+                <h4 className="font-bold text-lg xl:text-xl mb-3 xl:mb-4">Адрес</h4>
+                <p className="text-gray-600 xl:text-lg">Москва, ул. Садовая, 15</p>
               </div>
             </div>
-            <div className="mt-12">
-              <p className="text-gray-600 mb-4">Время работы: Пн-Вс 9:00-21:00</p>
-              <Button size="lg" className="bg-black text-white hover:bg-gray-800">
+            <div className="mt-16 xl:mt-20">
+              <p className="text-gray-600 xl:text-xl mb-6 xl:mb-8">Время работы: Пн-Вс 9:00-21:00</p>
+              <Button size="lg" className="bg-black text-white hover:bg-gray-800 xl:px-8 xl:py-4 xl:text-lg">
                 Написать нам
               </Button>
             </div>
