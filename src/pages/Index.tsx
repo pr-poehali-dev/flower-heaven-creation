@@ -94,7 +94,14 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
-              <h1 className="text-2xl font-bold text-black">GreenHome</h1>
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/img/048aa371-f0a9-4d0a-9aad-0d260c328e3d.jpg" 
+                  alt="Цветочный рай" 
+                  className="h-10 w-10 object-contain"
+                />
+                <h1 className="text-2xl font-bold text-black">Цветочный рай</h1>
+              </div>
               <nav className="hidden md:flex space-x-6">
                 <a href="#catalog" className="text-gray-600 hover:text-black transition-colors">Каталог</a>
                 <a href="#about" className="text-gray-600 hover:text-black transition-colors">О нас</a>
@@ -266,7 +273,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-4xl font-bold text-black mb-8">О нас</h3>
             <p className="text-lg text-gray-600 mb-8">
-              GreenHome — это больше чем магазин растений. Мы помогаем людям создавать 
+              Цветочный рай — это больше чем магазин растений. Мы помогаем людям создавать 
               живые пространства, которые вдохновляют и радуют каждый день.
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-12">
@@ -387,7 +394,14 @@ const Index = () => {
       <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h4 className="text-2xl font-bold mb-4">GreenHome</h4>
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <img 
+                src="/img/048aa371-f0a9-4d0a-9aad-0d260c328e3d.jpg" 
+                alt="Цветочный рай" 
+                className="h-8 w-8 object-contain"
+              />
+              <h4 className="text-2xl font-bold">Цветочный рай</h4>
+            </div>
             <p className="text-gray-400 mb-6">
               Создаем зеленые пространства для вашего дома
             </p>
